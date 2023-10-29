@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../../../assets/css/CreateTextMedia.css";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+import $ from "jquery";
 
 const CreateTextMediaPage = () => {
   const navigate = useNavigate();
@@ -35,18 +36,24 @@ const CreateTextMediaPage = () => {
     if (isFormSubmitted) {
       // Show the SweetAlert pop-up
       await Swal.fire({
-        title: 'Success!',
-        text: 'Your form was submitted successfully.',
+        className:'swal2-modal',
+        title: 'Submitted',
         icon: 'success',
-        confirmButtonText: 'OK',
         timer: 3000,
-        timerProgressBar: true,
         onClose: () => {
-          navigate('/createAdds');
+            navigate('/createAdds');
         },
       });
     }
+
+    $(".swal2-modal").css('background-color', '#000');//Optional changes the color of the sweetalert 
+        $(".swal2-container.in").css('background-color', 'rgba(43, 165, 137, 0.45)');
   };
+
+  function toggleOverlay() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = (overlay.style.display === 'none') ? 'block' : 'none';
+}
 
   return (
     <div className="createTextMedia">
@@ -58,6 +65,8 @@ const CreateTextMediaPage = () => {
             handleSubmit();
           }}
         >
+<div id="overlay"></div>
+
           <div className="row">
             <div className="col-md-6">
               <label for="heading01" className="form-label">
@@ -203,7 +212,7 @@ const CreateTextMediaPage = () => {
           <div className="row mt-3 buttons">
             <div className="col-md-12 d-flex justify-content-end">
               <button
-                type=""
+                type="button"
                 className="btn btn-secondary pl-1 pr-1"
                 style={{
                   color: "rgba(34, 31, 31, 0.8)",

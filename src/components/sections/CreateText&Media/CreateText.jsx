@@ -3,6 +3,7 @@ import "../../../assets/css/CreateTextMedia.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+import $ from "jquery";
 
 const CreateText = () => {
   const navigate = useNavigate();
@@ -24,26 +25,16 @@ const CreateText = () => {
   ];
 
   const handleSubmit = async () => {
-    // Your form submission logic goes here
-
-    // For demonstration purposes, let's assume the form submission is successful
-    // Replace the following line with your actual form submission logic
-    const isFormSubmitted = true;
-
-    if (isFormSubmitted) {
-      // Show the SweetAlert pop-up
-      await Swal.fire({
-        title: "Success!",
-        text: "Your form was submitted successfully.",
+    Swal.fire({
+        title: "Submitted",
         icon: "success",
-        confirmButtonText: "OK",
         timer: 3000,
-        timerProgressBar: true,
         onClose: () => {
-          navigate("/createAdds");
+            navigate('/createAdds');
         },
+
       });
-    }
+    
   };
 
   return (
@@ -151,7 +142,7 @@ const CreateText = () => {
           <div className="row mt-3 buttons fixed-bottom">
             <div className="col-md-12 d-flex justify-content-end">
               <button
-                type=""
+                type="button"
                 className="btn btn-secondary pl-1 pr-1"
                 style={{
                   color: "rgba(34, 31, 31, 0.8)",

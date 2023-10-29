@@ -42,3 +42,7 @@ input::placeholder {
   select {
     color:rgba(34, 31, 31, 0.5) !important;
   }
+
+.swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+    background: rgba(197, 194, 194, 0.65)!important;
+}
